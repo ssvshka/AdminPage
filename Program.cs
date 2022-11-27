@@ -33,7 +33,6 @@ builder.Services.Configure<SecurityStampValidatorOptions>(options =>
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 builder.Services.AddScoped<AuthenticationStateProvider, RevalidatingIdentityAuthenticationStateProvider<ApplicationUser>>();
-builder.Services.AddSingleton<WeatherForecastService>();
 builder.Services.AddSyncfusionBlazor();
 builder.Services.AddHttpClient();
 Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("NzY3ODU1QDMyMzAyZTMzMmUzMGNleDRMWTYwK1hsYzhnTUdqRkJzMWVhNWVGMWtmSW1aazRzVU5TY3BvL3M9");

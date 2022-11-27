@@ -1,6 +1,5 @@
 ﻿@using Authemption.Models
 @using Microsoft.AspNetCore.Identity
-@using System.Security.Claims;
 @inject IUserService UserService
 @inject UserManager<ApplicationUser> _userManager
 @inject NavigationManager _navigationManager
@@ -60,7 +59,7 @@
 @code
 {
     public List<ApplicationUser> Users { get; set; } = new();
-    protected override async Task OnInitializedAsync()
+    protected override void OnInitialized()
     {
         Users = UserService.GetUsers();
     }

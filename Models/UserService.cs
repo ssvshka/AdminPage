@@ -10,7 +10,6 @@ namespace Authemption.Models
         private UserDbContext _db;
         private UserManager<ApplicationUser> _userManager;
         private SignInManager<ApplicationUser> _signInManager;
-        private ClaimsPrincipal? _currentUser;
         public UserService(UserDbContext db, 
             UserManager<ApplicationUser> userManager, 
             SignInManager<ApplicationUser> signInManager)
@@ -48,5 +47,6 @@ namespace Authemption.Models
         {
             await _userManager.UpdateSecurityStampAsync(user);
         }
+
     }
 }
