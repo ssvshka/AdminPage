@@ -1,0 +1,24 @@
+﻿@inject NavigationManager NavigationManager
+
+<CascadingAuthenticationState>
+    <Router AppAssembly="@typeof(Program).Assembly">
+        <Found Context="routeData">
+            <AuthorizeRouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)">
+                <NotAuthorized>
+                    @{
+                        NavigationManager.NavigateTo("/");
+                    }
+                </NotAuthorized>
+            </AuthorizeRouteView>
+        </Found>
+        <NotFound>
+            <LayoutView Layout="@typeof(MainLayout)">
+                <PageTitle>Not Found</PageTitle>
+                <div style="display:flex; flex-direction: column; align-items: center;">
+                    <span style="font-size: 36px; color:#424242ff;">Not Found</span>
+                    <span style="font-size: 30px; color:#424242ff;">Sorry, there is nothing at this address</span>
+                </div>
+            </LayoutView>
+        </NotFound>
+    </Router>
+</CascadingAuthenticationState>

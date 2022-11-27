@@ -1,0 +1,132 @@
+﻿@using Authemption.Models
+@using Microsoft.AspNetCore.Identity
+@using System.Security.Claims;
+@inject IUserService UserService
+@inject UserManager<ApplicationUser> _userManager
+@inject NavigationManager _navigationManager
+@inject SignInManager<ApplicationUser> _signInManager
+@inject AuthenticationStateProvider _authState
+
+<SfToolbar>
+    <ToolbarItems>
+        <ToolbarItem Text="Block User" TooltipText="Block User" OnClick="BlockUsers" />
+        <ToolbarItem PrefixIcon="e-icons e-undo" TooltipText="Unblock User" OnClick="UnblockUsers" />
+        <ToolbarItem PrefixIcon="e-icons e-trash" TooltipText="Delete User" OnClick="DeleteUsers" />
+    </ToolbarItems>
+</SfToolbar>
+
+<style>
+    .e-icons.e-trash {
+        color: #ff0000 !important;
+        font-size: 24px !important;
+    }
+</style>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th><input type="checkbox" @onchange="e => SelectAllCheckboxClicked(e.Value)">SelectAll</input></th>
+            <th>Id</th>
+            <th>User Name</th>
+            <th>Email</th>
+            <th>Registration Date</th>
+            <th>Last Login</th>
+            <th>Active</th>
+        </tr>
+    </thead>
+    @foreach (var user in Users)
+    {
+        <tbody>
+            <tr>
+                <td><input id="" type="checkbox" checked="@UserSelected(user)" @onchange="e => CheckboxClicked(e.Value, user)" /></td>
+                <td>@user.Id</td>
+                <td>@user.UserName</td>
+                <td>@user.Email</td>
+                <td>@user.RegistrationDate</td>
+                <td>@user.LastLoginTime</td>
+                <td>@user.Active</td>
+            </tr>
+        </tbody>
+    }
+</table>
+
+<ul>
+    @foreach (var item in SelectedUsers)
+    {
+        <li>@item</li>
+    }
+</ul>
+
+@code
+{
+    public List<ApplicationUser> Users { get; set; } = new();
+    protected override async Task OnInitializedAsync()
+    {
+        Users = UserService.GetUsers();
+    }
+
+    public List<ApplicationUser> SelectedUsers { get; set; } = new();
+
+    private void CheckboxClicked(object checkedValue, ApplicationUser user)
+    {
+        if ((bool)checkedValue)
+            SelectUser(user);
+        else
+            UnselectUser(user);
+    }
+
+    private void SelectUser(ApplicationUser user)
+    {
+        if (!UserSelected(user))
+            SelectedUsers.Add(user);
+    }
+
+    private void UnselectUser(ApplicationUser user)
+    {
+        if (UserSelected(user))
+            SelectedUsers.Remove(user);
+    }
+
+    private bool UserSelected(ApplicationUser user)
+    {
+        return SelectedUsers.Contains(user);
+    }
+
+    private void SelectAllCheckboxClicked(object checkedValue)
+    {
+        if ((bool)checkedValue)
+            foreach (var u in Users)
+                SelectUser(u);
+        else
+            SelectedUsers.Clear();
+    }
+
+    private void DeleteUsers()
+    {
+        foreach (var user in SelectedUsers)
+            UserService.DeleteUser(user);
+        ReloadPage();
+    }
+
+    private async Task BlockUsers()
+    {
+        foreach (var user in SelectedUsers)
+        {
+            await UserService.BlockUser(user);
+            await UserService.SignOutUser(user);
+        }
+        ReloadPage();
+    }
+
+    private async Task UnblockUsers()
+    {
+        foreach (var user in SelectedUsers)
+            await UserService.UnblockUser(user);
+        ReloadPage();
+    }
+
+    private void ReloadPage()
+    {
+        _navigationManager.NavigateTo("/", true);
+    }
+}
