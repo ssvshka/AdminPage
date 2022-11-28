@@ -94,7 +94,8 @@
     {
         foreach (var user in SelectedUsers)
             await UserService.DeleteUser(user);
-        await ReloadOrRedirect();
+        await TryRedirectToLogin();
+        ReloadPage();
     }
 
     private async Task BlockUsers()
@@ -104,22 +105,26 @@
             await UserService.BlockUser(user);
             await UserService.SignOutUser(user);
         }
-        await ReloadOrRedirect();
+        await TryRedirectToLogin();
+        ReloadPage();
     }
 
     private async Task UnblockUsers()
     {
         foreach (var user in SelectedUsers)
             await UserService.UnblockUser(user);
-        await ReloadOrRedirect();
+        ReloadPage();
     }
 
-    private async Task ReloadOrRedirect()
+    private async Task TryRedirectToLogin()
     {
         var s = await _authState.GetAuthenticationStateAsync();
         if (SelectedUsers.Contains(SelectedUsers.Find(e => e.Name == s.User.Identity.Name)))
             _navigationManager.NavigateTo("Identity/Account/Login", true);
-        else
-            _navigationManager.NavigateTo("/", true);
+    }
+
+    private void ReloadPage()
+    {
+        _navigationManager.NavigateTo("/", true);
     }
 }

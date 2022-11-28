@@ -1,0 +1,35 @@
+{
+  "dependencies": {
+    "mssql1": {
+      "restored": true,
+      "restoreTime": "2022-11-28T04:19:27.2469173Z"
+    }
+  },
+  "parameters": {
+    "AuthTask4.resourceName": {
+      "Name": "AuthTask4.resourceName",
+      "Type": null,
+      "Value": "AuthTask4"
+    },
+    "AuthTask4.subscriptionId": {
+      "Name": "AuthTask4.subscriptionId",
+      "Type": "subscription",
+      "Value": "1f5be773-68ce-4503-9ca7-d8a4f834c197"
+    },
+    "subscriptionId": {
+      "Name": "subscriptionId",
+      "Type": "subscription",
+      "Value": "1f5be773-68ce-4503-9ca7-d8a4f834c197"
+    },
+    "AuthTask4.resourceGroupName": {
+      "Name": "AuthTask4.resourceGroupName",
+      "Type": "resourceGroup",
+      "Value": "123"
+    },
+    "AuthTask4.resourceGroupLocation": {
+      "Name": "AuthTask4.resourceGroupLocation",
+      "Type": null,
+      "Value": "westeurope"
+    }
+  }
+}

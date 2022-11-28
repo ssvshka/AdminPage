@@ -14,9 +14,7 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.0" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="7.0.0" />
-    <PackageReference Include="Syncfusion.Blazor.Buttons" Version="20.3.0.58" />
     <PackageReference Include="Syncfusion.Blazor.Core" Version="20.3.0.58" />
-    <PackageReference Include="Syncfusion.Blazor.Grid" Version="20.3.0.58" />
     <PackageReference Include="Syncfusion.Blazor.Navigations" Version="20.3.0.58" />
     <PackageReference Include="Syncfusion.Blazor.Themes" Version="20.3.0.58" />
   </ItemGroup>

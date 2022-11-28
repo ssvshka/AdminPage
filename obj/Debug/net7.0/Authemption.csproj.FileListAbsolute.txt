@@ -370,11 +370,9 @@ C:\Users\Аня\Desktop\itransition\Authemption\bin\Debug\net7.0\NuGet.ProjectMo
 C:\Users\Аня\Desktop\itransition\Authemption\bin\Debug\net7.0\NuGet.Protocol.dll
 C:\Users\Аня\Desktop\itransition\Authemption\bin\Debug\net7.0\NuGet.Versioning.dll
 C:\Users\Аня\Desktop\itransition\Authemption\bin\Debug\net7.0\Syncfusion.Blazor.Buttons.dll
-C:\Users\Аня\Desktop\itransition\Authemption\bin\Debug\net7.0\Syncfusion.Blazor.Calendars.dll
 C:\Users\Аня\Desktop\itransition\Authemption\bin\Debug\net7.0\Syncfusion.Blazor.Core.dll
 C:\Users\Аня\Desktop\itransition\Authemption\bin\Debug\net7.0\Syncfusion.Blazor.Data.dll
 C:\Users\Аня\Desktop\itransition\Authemption\bin\Debug\net7.0\Syncfusion.Blazor.DropDowns.dll
-C:\Users\Аня\Desktop\itransition\Authemption\bin\Debug\net7.0\Syncfusion.Blazor.Grids.dll
 C:\Users\Аня\Desktop\itransition\Authemption\bin\Debug\net7.0\Syncfusion.Blazor.Inputs.dll
 C:\Users\Аня\Desktop\itransition\Authemption\bin\Debug\net7.0\Syncfusion.Blazor.Lists.dll
 C:\Users\Аня\Desktop\itransition\Authemption\bin\Debug\net7.0\Syncfusion.Blazor.Navigations.dll
@@ -382,9 +380,7 @@ C:\Users\Аня\Desktop\itransition\Authemption\bin\Debug\net7.0\Syncfusion.Blaz
 C:\Users\Аня\Desktop\itransition\Authemption\bin\Debug\net7.0\Syncfusion.Blazor.Spinner.dll
 C:\Users\Аня\Desktop\itransition\Authemption\bin\Debug\net7.0\Syncfusion.Blazor.SplitButtons.dll
 C:\Users\Аня\Desktop\itransition\Authemption\bin\Debug\net7.0\Syncfusion.Blazor.Themes.dll
-C:\Users\Аня\Desktop\itransition\Authemption\bin\Debug\net7.0\Syncfusion.ExcelExport.Net.dll
 C:\Users\Аня\Desktop\itransition\Authemption\bin\Debug\net7.0\Syncfusion.Licensing.dll
-C:\Users\Аня\Desktop\itransition\Authemption\bin\Debug\net7.0\Syncfusion.PdfExport.Net.dll
 C:\Users\Аня\Desktop\itransition\Authemption\bin\Debug\net7.0\System.CodeDom.dll
 C:\Users\Аня\Desktop\itransition\Authemption\bin\Debug\net7.0\System.Composition.AttributedModel.dll
 C:\Users\Аня\Desktop\itransition\Authemption\bin\Debug\net7.0\System.Composition.Convention.dll
