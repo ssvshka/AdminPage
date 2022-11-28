@@ -1,7 +1,6 @@
 ﻿@using Authemption.Models
 @inject IUserService UserService
 @inject NavigationManager _navigationManager
-@inject AuthenticationStateProvider _authState
 
 <SfToolbar>
     <ToolbarItems>
@@ -94,7 +93,6 @@
     {
         foreach (var user in SelectedUsers)
             await UserService.DeleteUser(user);
-        await TryRedirectToLogin();
         ReloadPage();
     }
 
@@ -105,7 +103,6 @@
             await UserService.BlockUser(user);
             await UserService.SignOutUser(user);
         }
-        await TryRedirectToLogin();
         ReloadPage();
     }
 
@@ -114,13 +111,6 @@
         foreach (var user in SelectedUsers)
             await UserService.UnblockUser(user);
         ReloadPage();
-    }
-
-    private async Task TryRedirectToLogin()
-    {
-        var s = await _authState.GetAuthenticationStateAsync();
-        if (SelectedUsers.Contains(SelectedUsers.Find(e => e.Name == s.User.Identity.Name)))
-            _navigationManager.NavigateTo("Identity/Account/Login", true);
     }
 
     private void ReloadPage()
