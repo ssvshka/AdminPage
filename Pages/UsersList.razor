@@ -1,9 +1,6 @@
 ﻿@using Authemption.Models
-@using Microsoft.AspNetCore.Identity
 @inject IUserService UserService
-@inject UserManager<ApplicationUser> _userManager
 @inject NavigationManager _navigationManager
-@inject SignInManager<ApplicationUser> _signInManager
 @inject AuthenticationStateProvider _authState
 
 <SfToolbar>
@@ -49,13 +46,6 @@
     }
 </table>
 
-<ul>
-    @foreach (var item in SelectedUsers)
-    {
-        <li>@item</li>
-    }
-</ul>
-
 @code
 {
     public List<ApplicationUser> Users { get; set; } = new();
@@ -100,11 +90,11 @@
             SelectedUsers.Clear();
     }
 
-    private void DeleteUsers()
+    private async Task DeleteUsers()
     {
         foreach (var user in SelectedUsers)
-            UserService.DeleteUser(user);
-        ReloadPage();
+            await UserService.DeleteUser(user);
+        await ReloadOrRedirect();
     }
 
     private async Task BlockUsers()
@@ -114,18 +104,22 @@
             await UserService.BlockUser(user);
             await UserService.SignOutUser(user);
         }
-        ReloadPage();
+        await ReloadOrRedirect();
     }
 
     private async Task UnblockUsers()
     {
         foreach (var user in SelectedUsers)
             await UserService.UnblockUser(user);
-        ReloadPage();
+        await ReloadOrRedirect();
     }
 
-    private void ReloadPage()
+    private async Task ReloadOrRedirect()
     {
-        _navigationManager.NavigateTo("/", true);
+        var s = await _authState.GetAuthenticationStateAsync();
+        if (SelectedUsers.Contains(SelectedUsers.Find(e => e.Name == s.User.Identity.Name)))
+            _navigationManager.NavigateTo("Identity/Account/Login", true);
+        else
+            _navigationManager.NavigateTo("/", true);
     }
 }
